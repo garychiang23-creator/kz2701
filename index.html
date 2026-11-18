@@ -1,0 +1,892 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>草津十日</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700&family=Noto+Sans+TC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+/* 版面：單欄長文件；逐日卡片左邊一條日期欄（手機改成上方橫條），東京日藍、草津日湖綠 */
+:root{
+  --ground:#F1F4F6; --surface:#FFFFFF; --surface-2:#E8EEF2;
+  --ink:#121A21; --ink-2:#53616D; --ink-3:#8794A1;
+  --line:#D5DDE4; --line-strong:#B6C3CD;
+  --ember:#AE3719; --ember-soft:#F7E6E0; --ember-line:#E8C4B6;
+  --cool:#2A5878; --cool-soft:#E1EAF2; --cool-line:#BCD2E3;
+  --gold:#8E6A26; --gold-soft:#F2EADB; --gold-line:#DECDA9;
+  --ok:#2F6B45; --ok-soft:#E3EFE7;
+  --lake:#14625F; --lake-soft:#DFEDEC; --lake-line:#A9CCC9;
+  --serif:"Noto Serif TC",'Songti TC','Times New Roman',serif;
+  --sans:"Noto Sans TC",-apple-system,'PingFang TC','Helvetica Neue',sans-serif;
+  --mono:"IBM Plex Mono",'SFMono-Regular',Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#0C1117; --surface:#141C24; --surface-2:#1A242D;
+    --ink:#E3E9EF; --ink-2:#94A3B0; --ink-3:#697885;
+    --line:#232F3A; --line-strong:#34424E;
+    --ember:#E4805F; --ember-soft:#2A1913; --ember-line:#4A2B20;
+    --cool:#82B2D8; --cool-soft:#12212D; --cool-line:#26414F;
+    --gold:#CBA55E; --gold-soft:#221D12; --gold-line:#453919;
+    --ok:#79BE95; --ok-soft:#132118;
+    --lake:#5FBDB6; --lake-soft:#0E2523; --lake-line:#1F4744;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0C1117; --surface:#141C24; --surface-2:#1A242D;
+  --ink:#E3E9EF; --ink-2:#94A3B0; --ink-3:#697885;
+  --line:#232F3A; --line-strong:#34424E;
+  --ember:#E4805F; --ember-soft:#2A1913; --ember-line:#4A2B20;
+  --cool:#82B2D8; --cool-soft:#12212D; --cool-line:#26414F;
+  --gold:#CBA55E; --gold-soft:#221D12; --gold-line:#453919;
+  --ok:#79BE95; --ok-soft:#132118;
+  --lake:#5FBDB6; --lake-soft:#0E2523; --lake-line:#1F4744;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);
+  font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:940px;margin:0 auto;padding:0 22px 96px}
+h1,h2,h3{font-family:var(--serif);text-wrap:balance;margin:0}
+a{color:var(--cool)}
+:focus-visible{outline:2px solid var(--lake);outline-offset:3px;border-radius:3px}
+
+/* ── header ── */
+header.top{padding:64px 0 34px;border-bottom:2px solid var(--ink)}
+.kicker{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--lake);font-weight:600;margin-bottom:18px}
+h1{font-size:clamp(40px,7.5vw,68px);font-weight:700;line-height:1.06;letter-spacing:.02em}
+.sub{font-size:17px;color:var(--ink-2);margin-top:16px;max-width:62ch}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;
+  background:var(--line);border:1px solid var(--line);margin-top:34px}
+.fact{background:var(--surface);padding:16px 18px}
+.fact dt{font-family:var(--mono);font-size:11px;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--ink-3);margin:0 0 6px}
+.fact dd{margin:0;font-family:var(--mono);font-size:19px;font-weight:600;
+  font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.fact dd small{font-family:var(--sans);font-size:12px;font-weight:400;color:var(--ink-2);
+  display:block;letter-spacing:0;margin-top:3px}
+
+/* ── route strip ── */
+.route{display:flex;flex-wrap:wrap;gap:10px;align-items:stretch;margin:28px 0 0}
+.leg{flex:1 1 150px;border:1px solid var(--line);border-top:3px solid var(--legc,var(--cool));
+  background:var(--surface);padding:12px 14px}
+.leg b{display:block;font-family:var(--serif);font-size:18px;font-weight:700}
+.leg span{font-family:var(--mono);font-size:12px;color:var(--ink-2);
+  font-variant-numeric:tabular-nums}
+.leg--tokyo{--legc:var(--cool)} .leg--kusatsu{--legc:var(--lake)}
+
+/* ── sections ── */
+section{margin-top:62px;scroll-margin-top:20px}
+.sec-no{font-family:var(--mono);font-size:12px;letter-spacing:.16em;color:var(--ink-3);
+  font-weight:600;display:block;margin-bottom:8px}
+h2{font-size:clamp(25px,4vw,33px);font-weight:700;letter-spacing:.01em;
+  padding-bottom:12px;border-bottom:1px solid var(--line-strong)}
+h3{font-size:20px;font-weight:700;margin:36px 0 12px}
+p{margin:14px 0;max-width:66ch}
+ul{margin:12px 0;padding-left:20px;max-width:66ch}
+li{margin:6px 0}
+strong{font-weight:700}
+.lead{font-size:17.5px;color:var(--ink-2)}
+
+/* ── highlight block ── */
+.verdict{border:1px solid var(--lake-line);background:var(--lake-soft);
+  padding:18px 20px;margin:18px 0}
+.verdict h3,.verdict h5{margin:0 0 8px;color:var(--lake);font-family:var(--serif);font-size:18px;font-weight:700}
+.verdict p{margin:8px 0;max-width:70ch}
+.verdict p:last-child{margin-bottom:0}
+
+/* ── callouts ── */
+.note{border-left:3px solid var(--cool);background:var(--cool-soft);padding:14px 18px;margin:20px 0}
+.warn{border-left:3px solid var(--ember);background:var(--ember-soft);padding:14px 18px;margin:20px 0}
+.note p,.warn p{margin:6px 0;max-width:68ch}
+.note ul,.warn ul{max-width:68ch}
+.note p:first-child,.warn p:first-child{margin-top:0}
+.note p:last-child,.warn p:last-child{margin-bottom:0}
+.clabel{font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;
+  font-weight:600;display:block;margin-bottom:5px}
+.note .clabel{color:var(--cool)} .warn .clabel{color:var(--ember)}
+
+/* ── tables ── */
+.tw{overflow-x:auto;margin:22px 0;border:1px solid var(--line);background:var(--surface)}
+table{width:100%;border-collapse:collapse;font-size:14.5px;min-width:520px}
+th,td{padding:9px 13px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+thead th{font-family:var(--mono);font-size:11px;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--ink-3);font-weight:600;background:var(--surface-2);white-space:nowrap}
+tbody tr:last-child td{border-bottom:none}
+td.n,th.n{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums;
+  white-space:nowrap}
+td.m{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+tr.hit td{background:var(--ok-soft);font-weight:500}
+tr.hit td.n{color:var(--ok);font-weight:600}
+tr.dim td{color:var(--ink-3)}
+tr.sum td{background:var(--surface-2);font-weight:600}
+caption{caption-side:bottom;text-align:left;padding:10px 13px;font-size:12.5px;
+  color:var(--ink-3);border-top:1px solid var(--line)}
+table.days,table.fit,table.flow{min-width:0}
+.days td:nth-child(-n+2),.days th:nth-child(-n+2){white-space:nowrap}
+.fit td:first-child,.fit th:first-child{white-space:nowrap}
+.days a{color:inherit;text-decoration-color:var(--line-strong);text-underline-offset:3px}
+@media (max-width:620px){
+  .days th,.days td,.fit th,.fit td{padding:8px 9px}
+}
+
+/* ── day cards ── */
+.day{display:grid;grid-template-columns:96px 1fr;gap:22px;padding:28px 0;
+  border-bottom:1px solid var(--line);scroll-margin-top:16px}
+.day:last-of-type{border-bottom:none}
+.rail{border-left:3px solid var(--dc,var(--cool));padding-left:12px}
+.rail .dno{font-family:var(--mono);font-size:21px;font-weight:600;line-height:1.1;
+  font-variant-numeric:tabular-nums}
+.rail .dt{font-family:var(--mono);font-size:12.5px;color:var(--ink-2);
+  font-variant-numeric:tabular-nums;margin-top:3px}
+.rail .base{font-size:11.5px;color:var(--dc,var(--cool));font-weight:700;margin-top:7px;
+  letter-spacing:.05em}
+.day--tokyo{--dc:var(--cool)} .day--kusatsu{--dc:var(--lake)}
+.body{min-width:0}
+.body h4{font-family:var(--serif);font-size:20px;font-weight:700;margin:0 0 8px;text-wrap:balance}
+.body ul{margin:8px 0;padding-left:18px}
+.body p{margin:8px 0}
+.tag{display:inline-block;font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;
+  text-transform:uppercase;font-weight:600;padding:2px 7px;border:1px solid currentColor;
+  margin-left:8px;vertical-align:2px}
+.tag--move{color:var(--cool)} .tag--rest{color:var(--lake)} .tag--city{color:var(--gold)}
+
+/* 時間軸：左欄時刻、右欄要做的事 */
+ol.tl{list-style:none;padding:0;margin:12px 0 4px;max-width:none}
+ol.tl li{display:grid;grid-template-columns:58px 1fr;gap:12px;margin:0;padding:6px 0;
+  border-top:1px dashed var(--line)}
+ol.tl li:first-child{border-top:none}
+ol.tl time{font-family:var(--mono);font-size:13px;font-weight:600;color:var(--dc,var(--cool));
+  font-variant-numeric:tabular-nums;padding-top:2px}
+
+/* 吃喝／玩／看點 區塊 */
+.blk{margin-top:18px}
+.blk h5{font-family:var(--sans);font-size:12px;letter-spacing:.2em;color:var(--ink-3);
+  font-weight:700;margin:0 0 4px;padding-bottom:4px;border-bottom:1px solid var(--line)}
+ul.picks{list-style:none;padding:0;margin:0;max-width:none}
+ul.picks li{margin:0;padding:8px 0;border-top:1px solid var(--line)}
+ul.picks li:first-child{border-top:none}
+.rt{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--gold);margin-left:6px;
+  font-variant-numeric:tabular-nums}
+.meta{display:block;font-size:13px;color:var(--ink-2);line-height:1.65;margin-top:2px}
+ul.sub{list-style:none;padding:0;margin:4px 0 0;max-width:none}
+ul.sub li{margin:0;padding:4px 0 4px 12px;border-left:2px solid var(--line);font-size:14.5px;line-height:1.6}
+ul.sub li+li{margin-top:4px}
+
+/* ── todo ── */
+ol.todo{counter-reset:t;list-style:none;padding:0;margin:22px 0;max-width:100%}
+ol.todo li{counter-increment:t;display:grid;grid-template-columns:38px 1fr;gap:14px;
+  padding:15px 0;border-bottom:1px solid var(--line);margin:0;max-width:none}
+ol.todo li::before{content:counter(t,decimal-leading-zero);font-family:var(--mono);
+  font-size:13px;font-weight:600;color:var(--lake);padding-top:3px}
+ol.todo li>b,ol.todo li>span{grid-column:2}
+ol.todo b{display:block;font-size:16px}
+ol.todo span{color:var(--ink-2);font-size:14.5px;line-height:1.7}
+
+/* ── deadline strip ── */
+.dl{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1px;
+  background:var(--line);border:1px solid var(--line);margin:24px 0}
+.dl div{background:var(--surface);padding:14px 16px}
+.dl dt{font-family:var(--mono);font-size:16px;font-weight:600;color:var(--ember);
+  font-variant-numeric:tabular-nums;margin:0 0 4px}
+.dl dd{margin:0;font-size:13.5px;color:var(--ink-2);line-height:1.6}
+
+/* ── source chips ── */
+.legend{display:flex;flex-wrap:wrap;gap:16px;font-size:13px;color:var(--ink-2);margin:16px 0}
+.chip{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.05em;white-space:nowrap}
+.chip--live{color:var(--ok)} .chip--est{color:var(--ink-3)} .chip--paid{color:var(--cool)}
+
+footer{margin-top:70px;padding-top:26px;border-top:2px solid var(--ink);
+  font-size:13.5px;color:var(--ink-2)}
+footer p{max-width:72ch}
+@media (max-width:620px){
+  .wrap{padding:0 16px 80px}
+  .day{grid-template-columns:1fr;gap:12px}
+  .rail{border-left:none;border-top:3px solid var(--dc,var(--cool));padding:10px 0 0;
+    display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline}
+  .rail .dt,.rail .base{margin-top:0}
+  ol.tl li{grid-template-columns:50px 1fr;gap:10px}
+}
+
+/* ── 跳轉列：固定在頂端，橫滑選日期或章節 ── */
+:root{--navh:66px;
+  --pin:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2a7 7 0 0 0-7 7c0 5.3 7 13 7 13s7-7.7 7-13a7 7 0 0 0-7-7zm0 9.6a2.6 2.6 0 1 1 0-5.2 2.6 2.6 0 0 1 0 5.2z'/%3E%3C/svg%3E")}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+section,.day,h3[id]{scroll-margin-top:calc(var(--navh) + 10px)}
+nav.jump{position:sticky;top:0;z-index:30;display:flex;gap:6px;overflow-x:auto;overscroll-behavior-x:contain;
+  margin:0 -22px;padding:10px 22px;background:var(--ground);border-bottom:1px solid var(--line);scrollbar-width:none}
+@supports ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))) and (background:color-mix(in srgb,red 50%,transparent)){
+  nav.jump{background:color-mix(in srgb,var(--ground) 88%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+}
+nav.jump::-webkit-scrollbar{display:none}
+nav.jump a{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  min-width:46px;min-height:44px;padding:2px 9px;background:var(--surface);border:1px solid var(--line);
+  border-top:3px solid var(--ink-3);color:var(--ink);text-decoration:none;line-height:1.25}
+nav.jump a b{font-family:var(--mono);font-size:13px;font-weight:600;font-variant-numeric:tabular-nums}
+nav.jump a small{font-size:11px;color:var(--ink-2)}
+nav.jump a.x{font-size:14px;font-weight:700;padding:2px 12px}
+nav.jump a.t{border-top-color:var(--cool)} nav.jump a.k{border-top-color:var(--lake)}
+nav.jump a:hover{background:var(--surface-2)}
+
+/* ── 吃喝／玩／看點：點標題展開 ── */
+details.blk{margin-top:10px;border-top:1px solid var(--line)}
+details.blk>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;min-height:44px;
+  padding:8px 2px;font-size:12.5px;letter-spacing:.18em;font-weight:700;color:var(--ink-2)}
+details.blk>summary::-webkit-details-marker{display:none}
+details.blk>summary .cnt{font-family:var(--mono);font-size:11px;letter-spacing:.04em;font-weight:500;color:var(--ink-3)}
+details.blk>summary::after{content:"";margin-left:auto;width:7px;height:7px;flex:0 0 auto;
+  border-right:2px solid var(--ink-3);border-bottom:2px solid var(--ink-3);transform:translateY(-2px) rotate(45deg);transition:transform .2s}
+details.blk[open]>summary::after{transform:translateY(2px) rotate(-135deg)}
+details.blk>summary:hover,details.blk[open]>summary{color:var(--ink)}
+details.blk[open]{padding-bottom:6px}
+
+/* ── 地圖連結 ── */
+a.map{color:inherit;text-decoration:underline;text-decoration-color:var(--cool-line);
+  text-decoration-thickness:2px;text-underline-offset:3px}
+a.map::after{content:"";display:inline-block;width:.75em;height:.75em;margin-left:.2em;vertical-align:-.04em;
+  background:var(--cool);-webkit-mask:var(--pin) center/contain no-repeat;mask:var(--pin) center/contain no-repeat}
+a.map:hover{text-decoration-color:var(--cool)}
+
+/* ── 手機：寬表格改成一列一張卡片 ── */
+@media (max-width:620px){
+  :root{--navh:62px}
+  nav.jump{margin:0 -16px;padding:8px 16px}
+  table.stack,table.grid{min-width:0}
+  table.stack thead,table.grid thead{display:none}
+  table.stack,table.stack tbody,table.stack tr,table.stack td,table.grid,table.grid tbody,table.stack caption,table.grid caption{display:block;width:auto}
+  table.stack tr{padding:11px 13px;border-bottom:1px solid var(--line)}
+  table.stack tbody tr:last-child,table.grid tbody tr:last-child{border-bottom:none}
+  table.stack td{border:0;padding:0;text-align:left;white-space:normal}
+  table.stack td:first-child{margin-bottom:3px}
+  table.stack td[data-l]{display:inline-block;margin:0 16px 3px 0;vertical-align:top}
+  table.stack td[data-l]::before{content:attr(data-l);font-family:var(--sans);font-size:11.5px;letter-spacing:.04em;
+    color:var(--ink-3);margin-right:6px;font-weight:400}
+  table.stack td:not(:first-child):not([data-l]){margin-top:3px;font-size:14px}
+  table.stack.chips td:first-child{font-weight:700}
+  table.stack tr.hit,table.grid tr.hit{background:var(--ok-soft)}
+  table.grid tr.sum{background:var(--surface-2)}
+  table.stack tr.hit td,table.grid tr.hit td,table.grid tr.sum td{background:transparent}
+  table.grid tr{display:grid;grid-template-columns:1fr auto;column-gap:12px;padding:10px 13px;border-bottom:1px solid var(--line)}
+  table.grid.g4 tr{grid-template-columns:1fr auto auto}
+  table.grid td{border:0;padding:0}
+  table.grid td:nth-child(2){grid-column:1/-1;grid-row:2;font-size:13.5px;color:var(--ink-2);margin-top:3px}
+}
+</style>
+
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <div class="kicker">2027 冬 · 東京 → 草津 → 東京 · 10 天 9 夜 · 機票住宿已訂</div>
+  <h1>草津十日</h1>
+  <p class="sub"><strong>1/12–1/21</strong>。機票和三段住宿都訂好了：東京大井町 2 晚、草津的<strong>界 草津</strong> 2 晚，再回大井町 5 晚。東京排了三個整天：<strong>1/13 赤城神社、神樂坂、池袋</strong>；<strong>1/17 明治神宮、原宿</strong>；<strong>1/18 合羽橋、淺草</strong>，傍晚看淺草寺一年一次的「亡者送り」。</p>
+  <dl class="facts">
+    <div class="fact"><dt>出發</dt><dd>1/12 二<small>JL 96　09:10 松山 → 羽田 13:00</small></dd></div>
+    <div class="fact"><dt>回程</dt><dd>1/21 四<small>JL 99　18:05 羽田 → 松山 21:00</small></dd></div>
+    <div class="fact"><dt>住宿</dt><dd>9 夜<small>東京 7 晚・草津 2 晚，都已訂</small></dd></div>
+    <div class="fact"><dt>每人</dt><dd>約 64k<small>NT$，不含購物與相撲票</small></dd></div>
+  </dl>
+  <div class="route">
+    <div class="leg leg--tokyo"><b>東京・大井町</b><span>1/12–1/14 · 2 晚</span></div>
+    <div class="leg leg--kusatsu"><b>草津・界 草津</b><span>1/14–1/16 · 2 晚 · 含早晚餐</span></div>
+    <div class="leg leg--tokyo"><b>東京・大井町</b><span>1/16–1/21 · 5 晚</span></div>
+  </div>
+</header>
+
+<nav class="jump" aria-label="跳到">
+  <a class="x" href="#todo">待辦</a>
+  <a class="t" href="#d01"><b>1/12</b><small>二</small></a>
+  <a class="t" href="#d02"><b>1/13</b><small>三</small></a>
+  <a class="k" href="#d03"><b>1/14</b><small>四</small></a>
+  <a class="k" href="#d04"><b>1/15</b><small>五</small></a>
+  <a class="t" href="#d05"><b>1/16</b><small>六</small></a>
+  <a class="t" href="#d06"><b>1/17</b><small>日</small></a>
+  <a class="t" href="#d07"><b>1/18</b><small>一</small></a>
+  <a class="t" href="#d08"><b>1/19</b><small>二</small></a>
+  <a class="t" href="#d08"><b>1/20</b><small>三</small></a>
+  <a class="t" href="#d10"><b>1/21</b><small>四</small></a>
+  <a class="x" href="#stay">住</a>
+  <a class="x" href="#move">行</a>
+  <a class="x" href="#wear">衣</a>
+  <a class="x" href="#money">錢</a>
+</nav>
+
+<section id="todo">
+  <span class="sec-no">01 — 還要辦的事</span>
+  <h2>機票住宿訂好了，剩下這幾件</h2>
+
+  <dl class="dl">
+    <div><dt>12/05 10:00</dt><dd>大相撲一月場所開賣（還沒決定要不要看）</dd></div>
+    <div><dt>12/07・12/09 14:00</dt><dd>1/14、1/16 的特急「草津・四万」開始登記（12/14、12/16 10:00 正式開賣）</dd></div>
+    <div><dt>出發前</dt><dd>1/18 食品模型體驗、想訂的餐廳（都可以不訂）</dd></div>
+  </dl>
+
+  <ol class="todo">
+    <li><b>12/5（六）10:00：要看相撲就這天搶</b><span>排在 <strong>1/19（二）或 1/20（三）</strong>，那兩天沒有別的安排；1/18 傍晚要在淺草寺，跟相撲 18:00 結束撞在一起。官方售票是「チケット大相撲」，有英文版 Ticket Oosumo。前一場十一月場所已經全部日期售罄，當天也不賣票，所以開賣當天上午就要下手。2027 年一月場所起票價調整、還沒公布；參考 2026 年一月場所，二樓椅子席平日每人 ¥3,500–9,000。</span></li>
+    <li><b>12/7、12/9 14:00 起：特急指定席先登記</b><span><strong>1/14 上野 10:00 發的「草津・四万」1 號</strong>，和 <strong>1/16 長野原草津口 13:07 發</strong>的那一班，三位大人。在 JR 東日本的訂票網站えきねっと先登記，12/14、12/16 的 10:00 正式開賣時系統自動排位子；沒排到就當天 10:00 以後自己上網買。會員現在就先註冊。網址、步驟和備案班次見<a href="#book">第 05 節「訂特急票」</a>。</span></li>
+    <li><b>界 草津的晚餐時段</b><span>訂房之後要另外上網約兩晚的晚餐時段（17:30 或 19:30），還沒約的話記得約。</span></li>
+    <li><b>出發前：可以先訂的體驗和餐廳</b><span>①<strong>1/18 合羽橋「元祖食品サンプル屋」</strong>做天婦羅和生菜的食品模型，11:00 那場最順，網路可以訂 1–4 人，每人 ¥3,300，約 40 分鐘。②1/18 晚餐想吃高檔壽喜燒：<strong>浅草今半 国際通り本店</strong>打電話訂位（03-3841-1114），19:00 前要入店。③1/17 午餐想吃炸豬排：<strong>PRETTY PORK FACTORY</strong>（ハラカド 5 樓）可以訂位。其他推薦的店都是現場排。</span></li>
+  </ol>
+
+  <div class="note">
+    <span class="clabel">出發前一週再確認</span>
+    <p>①JR 巴士（長野原草津口 ⇄ 草津溫泉）的冬季時刻　②熱乃湯「湯もみと踊り」的冬季場次　③羽田 ⇄ 大井町機場巴士的時刻　④明治神宮博物館一月的展期（換展期間休館）　⑤あかぎカフェ一月的營業日（每月公布）　⑥神谷バー 1/18 有沒有開（每月有兩個週一公休，官網有營業日曆）。</p>
+    <p>去程要改包車的話，出發前訂好廂型車（三人、六件行李）。</p>
+    <p>要帶的：<strong>防水止滑的雪靴</strong>（草津路面會結冰）、保暖衣物、<strong>現金</strong>（熱乃湯只收現金或 PayPay；米久、初小川、蕎楽亭、梅むら這些老店只收現金）。在合羽橋買了刀，刀只能放託運行李。</p>
+  </div>
+</section>
+
+<section id="days">
+  <span class="sec-no">02 — 十天</span>
+  <h2>每天住哪、主軸是什麼</h2>
+
+  <div class="tw">
+  <table class="days">
+    <thead><tr><th>日期</th><th>住</th><th>當天</th></tr></thead>
+    <tbody>
+      <tr><td class="m"><a href="#d01">1/12 二</a></td><td>大井町</td><td>13:00 到羽田，機場巴士或包車到飯店；晚上在大井町吃</td></tr>
+      <tr class="hit"><td class="m"><a href="#d02">1/13 三</a></td><td>大井町</td><td><strong>赤城神社、神樂坂 → 池袋</strong>（陽光城水族館、展望台）</td></tr>
+      <tr><td class="m"><a href="#d03">1/14 四</a></td><td>界 草津</td><td><strong>大行李寄在大井町飯店</strong>。上野 10:00 特急 → 草津，午餐在溫泉街</td></tr>
+      <tr><td class="m"><a href="#d04">1/15 五</a></td><td>界 草津</td><td>湯畑、西の河原露天風呂、熱乃湯</td></tr>
+      <tr><td class="m"><a href="#d05">1/16 六</a></td><td>大井町</td><td>巴士 12:00 → 特急 13:07 → 上野 15:26 → 大井町，<strong>領回大行李</strong></td></tr>
+      <tr class="hit"><td class="m"><a href="#d06">1/17 日</a></td><td>大井町</td><td><strong>明治神宮 → 原宿、表參道</strong></td></tr>
+      <tr class="hit"><td class="m"><a href="#d07">1/18 一</a></td><td>大井町</td><td><strong>合羽橋 → 淺草</strong>，18:00 淺草寺「亡者送り」</td></tr>
+      <tr><td class="m"><a href="#d08">1/19 二</a></td><td>大井町</td><td>自由（可排相撲；しながわ水族館休館）</td></tr>
+      <tr><td class="m"><a href="#d08">1/20 三</a></td><td>大井町</td><td>自由（可排相撲）</td></tr>
+      <tr><td class="m"><a href="#d10">1/21 四</a></td><td>—</td><td>12:00 退房、大行李放 5 樓；15:10 機場巴士 → 15:54 第 3 航廈；JL 99 18:05</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="note">
+    <span class="clabel">為什麼這樣排</span>
+    <ul>
+      <li>合羽橋道具街約七成店家週日和國定假日休息，所以放週一（1/18）。</li>
+      <li>1/18 是淺草寺「溫座秘法陀羅尼會」最後一天，18:00 左右有一年只看得到一次的「亡者送り」；這天也是一年第一個觀音緣日。</li>
+      <li>赤城神社境內的あかぎカフェ週二公休，神樂坂和池袋放週三（1/13）。</li>
+      <li>明治神宮放週日（1/17）：週末辦神前婚禮的人多，比較有機會看到婚禮隊伍。</li>
+    </ul>
+  </div>
+</section>
+
+<section id="daily">
+  <span class="sec-no">03 — 逐日</span>
+  <h2>逐日行程</h2>
+  <p class="lead">東京三天各附「吃喝」「玩」「看點」，點標題展開。店家後面的數字是食べログ分數，營業時間是當天那個星期幾的時間（2026-11-18 重查）。名稱有底線、帶地圖圖示的，點了開 Google 地圖。</p>
+
+  <div class="day day--tokyo" id="d01">
+    <div class="rail"><div class="dno">D01</div><div class="dt">1/12 二</div><div class="base">抵達</div></div>
+    <div class="body">
+      <h4>落地、入住<span class="tag tag--move">移動</span></h4>
+      <ul>
+        <li>13:00 到羽田第 3 航廈。機場巴士 14:05 或 15:05（約 50 分鐘）到飯店樓下，或包車（見第 05 節）。</li>
+        <li>還不能入住的話，大行李先放 5 樓自助行李間。</li>
+        <li>晚餐在大井町：飯店同一棟有とんかつ檍、京鼎樓、神座拉麵、迴轉壽司；站前有イトーヨーカドー、阪急、アトレ。食べログ 3.5 以上的店整理在另一頁 <a href="https://claude.ai/artifact/MwyXTgGTm1BmDyBN4pJ4UW">大井町站周邊餐廳</a>，可以依日期篩掉公休的店。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="day day--tokyo" id="d02">
+    <div class="rail"><div class="dno">D02</div><div class="dt">1/13 三</div><div class="base">神樂坂 → 池袋</div></div>
+    <div class="body">
+      <h4>赤城神社、神樂坂，下午池袋<span class="tag tag--city">東京</span></h4>
+      <ol class="tl">
+        <li><time>09:20</time><span>大井町出發：京濱東北線到新橋，轉銀座線到日本橋，再轉東西線到<strong>神樂坂站</strong>，約 41 分鐘、¥418。1b 出口出來走 1 分鐘就是赤城神社。</span></li>
+        <li><time>10:00</time><span><strong><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E8%B5%A4%E5%9F%8E%E7%A5%9E%E7%A4%BE%20%E6%96%B0%E5%AE%BF%E5%8C%BA%20%E8%B5%A4%E5%9F%8E%E5%85%83%E7%94%BA" target="_blank" rel="noopener">赤城神社</a></strong>：24 小時都能參拜，社務所 9:00–17:00（御守、御朱印）。</span></li>
+        <li><time>10:40</time><span>沿著神樂坂通往下坡走向飯田橋，中途彎進旁邊的石板巷弄。</span></li>
+        <li><time>11:30</time><span>午餐（蕎楽亭 11:30 開門，早點到門口排）。</span></li>
+        <li><time>13:00</time><span>吃甜點、買伴手禮，一路走到飯田橋站。</span></li>
+        <li><time>13:40</time><span>飯田橋 → <strong>東池袋</strong>：有樂町線 7 分鐘、¥178。6、7 號出口有地下通道，走 3 分鐘就進陽光城。</span></li>
+        <li><time>14:00</time><span><strong><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%82%B5%E3%83%B3%E3%82%B7%E3%83%A3%E3%82%A4%E3%83%B3%E6%B0%B4%E6%97%8F%E9%A4%A8" target="_blank" rel="noopener">陽光水族館</a></strong>（最後入場 17:30）。</span></li>
+        <li><time>15:45</time><span>寶可夢中心、扭蛋百貨。</span></li>
+        <li><time>16:30</time><span><strong><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%81%A6%E3%82%93%E3%81%BC%E3%81%86%E3%83%91%E3%83%BC%E3%82%AF%20%E3%82%B5%E3%83%B3%E3%82%B7%E3%83%A3%E3%82%A4%E3%83%B360" target="_blank" rel="noopener">60 樓展望台</a></strong>：這天東京日落 16:49，日落後接著看夜景。</span></li>
+        <li><time>18:00</time><span>晚餐。回程從池袋搭往新木場的埼京線，直達大井町約 25 分鐘、¥463。</span></li>
+      </ol>
+
+      <details class="blk">
+        <summary>吃喝<span class="cnt">9 家</span></summary>
+        <ul class="picks">
+          <li><b><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E7%9F%B3%E8%87%BC%E6%8C%BD%E3%81%8D%E6%89%8B%E6%89%93%20%E8%95%8E%E6%A5%BD%E4%BA%AD%20%E7%A5%9E%E6%A5%BD%E5%9D%82" target="_blank" rel="noopener">石臼挽き手打 蕎楽亭</a></b><span class="rt">3.76</span>　手打蕎麥麵和炸物，神樂坂的人氣店。<span class="meta">週三 11:30–14:00、17:00–20:00｜午餐約 ¥1,000–2,000｜午餐不能訂位、只收現金</span></li>
+          <li><b><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%81%82%E3%81%8B%E3%81%8E%E3%82%AB%E3%83%95%E3%82%A7%20%E8%B5%A4%E5%9F%8E%E7%A5%9E%E7%A4%BE" target="_blank" rel="noopener">あかぎカフェ</a></b><span class="rt">3.48</span>　就在赤城神社境內，用群馬蔬菜做的義大利菜。<span class="meta">週三 11:30–21:00｜約 ¥1,000–2,000｜午餐只接受 11:30 開店那一輪的訂位；每人至少點一份；週二與每月第 2、第 4 個週一公休</span></li>
+          <li><b><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E7%B4%80%E3%81%AE%E5%96%84%20%E7%A5%9E%E6%A5%BD%E5%9D%82" target="_blank" rel="noopener">紀の善 神楽坂</a></b><span class="rt">3.62</span>　甘味處，在下坡快到飯田橋的地方。<span class="meta">11:00–19:00（內用約 17:00 截止，賣完提早關）｜約 ¥1,000–2,000｜不定休</span></li>
+          <li><b><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E4%BA%94%E5%8D%81%E9%88%B4%20%E7%A5%9E%E6%A5%BD%E5%9D%82%20%E5%92%8C%E8%8F%93%E5%AD%90" target="_blank" rel="noopener">五十鈴</a></b><span class="rt">3.73</span>　和菓子老店，銅鑼燒、仙貝，適合買伴手禮。<span class="meta">週三 9:00–19:30｜週日、國定假日休</span></li>
+          <li><b><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=AKHA%20AMA%20COFFEE%20%E7%A5%9E%E6%A5%BD%E5%9D%82" target="_blank" rel="noopener">AKHA AMA COFFEE</a></b><span class="rt">3.68</span>　赤城神社附近的咖啡店，早到可以先喝一杯。<span class="meta">8:00–19:00</span></li>
+          <li><b>池袋晚餐</b><ul class="sub"><li><strong><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%AE%8D%E9%81%93%E6%B9%96%E3%81%97%E3%81%98%E3%81%BF%E4%B8%AD%E8%8F%AF%E8%95%8E%E9%BA%A6%20%E7%90%A5%E7%8F%80%20%E6%B1%A0%E8%A2%8B" target="_blank" rel="noopener">宍道湖しじみ中華蕎麦 琥珀</a></strong><span class="rt">3.74</span>　蜆仔湯頭拉麵，池袋北口｜11:00–22:30｜只收現金</li><li><strong><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%82%AB%E3%83%A9%E3%82%B7%E3%83%93%E5%91%B3%E5%99%8C%E3%82%89%E3%83%BC%E9%BA%BA%20%E9%AC%BC%E9%87%91%E6%A3%92%20%E6%B1%A0%E8%A2%8B" target="_blank" rel="noopener">カラシビ味噌らー麺 鬼金棒</a></strong><span class="rt">3.65</span>　又辣又麻的味噌拉麵｜11:00–21:30</li><li><strong><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E4%BA%BA%E5%BD%A2%E7%94%BA%E4%BB%8A%E5%8D%8A%20%E6%B1%A0%E8%A2%8B%E6%9D%B1%E6%AD%A6%E5%BA%97" target="_blank" rel="noopener">人形町今半 池袋東武店</a></strong><span class="rt">3.60</span>　想坐下來吃壽喜燒｜東武百貨 15 樓，平日晚上 17:00–22:00｜晚餐約 ¥10,000–15,000｜可訂位</li></ul></li>
+          <li><b><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%A4%9C%E3%83%91%E3%83%95%E3%82%A7%E5%B0%82%E9%96%80%E5%BA%97%20%E3%83%A2%E3%83%A2%E3%83%96%E3%82%AF%E3%83%AD%20%E6%B1%A0%E8%A2%8B" target="_blank" rel="noopener">夜パフェ専門店 モモブクロ</a></b><span class="rt">3.58</span>　飯後吃聖代。<span class="meta">週三 17:00–24:00｜約 ¥2,000–3,000｜19:00 前到店可訂位</span></li>
+        </ul>
+      </details>
+
+      <details class="blk">
+        <summary>玩<span class="cnt">4 項</span></summary>
+        <ul>
+          <li><strong>陽光水族館</strong>：在大樓頂樓，戶外區「マリンガーデン」有可以抬頭看的企鵝水槽。冬季平日 10:00–18:00（最後入場 17:30），大人 ¥2,600–3,200（依日期浮動）。1/14 休館，那天你們在草津。</li>
+          <li><strong>展望台「てんぼうパーク」</strong>：60 樓，11:00–21:00（最後入場 20:30），平日大人 ¥700，到 60 樓櫃台買當天票就好。</li>
+          <li><strong><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%9D%E3%82%B1%E3%83%A2%E3%83%B3%E3%82%BB%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%A1%E3%82%AC%E3%83%88%E3%82%A6%E3%82%AD%E3%83%A7%E3%83%BC" target="_blank" rel="noopener">寶可夢中心 MEGA TOKYO</a></strong>：專門店街アルパ 2 樓，10:00–20:00。</li>
+          <li><strong><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%82%AC%E3%82%B7%E3%83%A3%E3%83%9D%E3%83%B3%E3%81%AE%E3%83%87%E3%83%91%E3%83%BC%E3%83%88%20%E6%B1%A0%E8%A2%8B%E7%B7%8F%E6%9C%AC%E5%BA%97" target="_blank" rel="noopener">扭蛋百貨（ガシャポンのデパート 池袋総本店）</a></strong>：World Import Mart 大樓 3 樓，2021 年以 3,010 台扭蛋機拿下金氏世界紀錄。</li>
+        </ul>
+      </details>
+
+      <details class="blk">
+        <summary>看點<span class="cnt">5 則</span></summary>
+        <ul>
+          <li><strong>跟草津同一縣</strong>：相傳 1300 年，群馬赤城山麓的豪族大胡氏搬到牛込，把家鄉赤城神社的分靈帶來祭祀。隔天要去的草津也在群馬。</li>
+          <li><strong>隈研吾的神社</strong>：2010 年整個重建完成，由隈研吾做設計監修；旁邊那棟公寓是同一個重建案的一部分。</li>
+          <li><strong>拜什麼</strong>：本社以良緣、夫妻圓滿出名；境內還有螢雪天神（學業）、八耳神社（病痛痊癒）、出世稻荷、東照宮。</li>
+          <li><strong>規矩</strong>：境內禁止飲食（要吃喝就去あかぎカフェ），境內也沒有廁所。</li>
+          <li><strong>神樂坂通</strong>：這條坡的單行道方向上午和下午相反。</li>
+        </ul>
+      </details>
+    </div>
+  </div>
+
+  <div class="day day--kusatsu" id="d03">
+    <div class="rail"><div class="dno">D03</div><div class="dt">1/14 四</div><div class="base">東京 → 草津</div></div>
+    <div class="body">
+      <h4>上山<span class="tag tag--move">移動</span></h4>
+      <ul>
+        <li>早上在大井町退房，<strong>大行李寄在飯店</strong>，只帶兩天份的小包。</li>
+        <li><strong>大井町 → 上野</strong>：京濱東北線直達，約 26 分鐘、¥253。</li>
+        <li><strong>上野 10:00 → 長野原草津口 12:18</strong>：特急「草津・四万」1 號，全車指定席。</li>
+        <li><strong>長野原草津口 12:31 → 草津溫泉 12:56</strong>：JR 巴士，¥780。</li>
+        <li>在溫泉街吃午餐（店在下面），再搭計程車到<a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E7%95%8C%20%E8%8D%89%E6%B4%A5%20%E6%98%9F%E9%87%8E%E3%83%AA%E3%82%BE%E3%83%BC%E3%83%88" target="_blank" rel="noopener">界 草津</a>（約 10 分鐘），14:30 入住。</li>
+        <li><strong>下午</strong>：從飯店走住客專用隧道到西の河原公園，沿著西の河原通り走到<strong><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%B9%AF%E7%95%91%20%E8%8D%89%E6%B4%A5%E6%B8%A9%E6%B3%89" target="_blank" rel="noopener">湯畑</a></strong>。<strong><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E7%86%B1%E4%B9%83%E6%B9%AF%20%E8%8D%89%E6%B4%A5" target="_blank" rel="noopener">熱乃湯「湯もみと踊り」</a></strong>下午 15:30、16:00、16:30 三場，大人 ¥700，開演前 30 分鐘在售票處開賣，只收現金或 PayPay，不能預約。</li>
+        <li><strong>晚上</strong>：飯店晚餐（上州豊伝會席）。湯畑晚上有點燈，想看夜景就飯後再出門一趟，隧道的開放時間入住時問櫃台。</li>
+      </ul>
+
+      <details class="blk">
+        <summary>草津的午餐和點心（1/14–1/16 都用得上）<span class="cnt">7 家</span></summary>
+        <ul class="picks">
+          <li><b><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E4%B8%8A%E5%B7%9E%E5%9C%B0%E7%B2%89%E3%81%86%E3%81%A9%E3%82%93%20%E3%81%BE%E3%81%A4%E3%82%82%E3%81%A8%20%E8%8D%89%E6%B4%A5" target="_blank" rel="noopener">上州地粉うどん まつもと</a></b><span class="rt">3.54</span>　群馬本地麵粉做的烏龍麵。<span class="meta">週四、五 10:30–16:00，週六 10:30–19:00｜週三休｜約 ¥1,000–2,000｜只收現金、不能訂位</span></li>
+          <li><b><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E7%9F%B3%E8%87%BC%E6%8C%BD%E8%95%8E%E9%BA%A6%20%E4%B8%89%E5%9B%BD%E5%AE%B6%20%E8%8D%89%E6%B4%A5" target="_blank" rel="noopener">石臼挽蕎麦 三国家</a></b><span class="rt">3.49</span>　石臼磨粉的蕎麥麵。<span class="meta">週四到週六 11:00–14:30｜週二休｜約 ¥2,000–3,000｜可刷卡；訂位每人收 ¥400</span></li>
+          <li><b><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E8%8D%89%E6%B4%A5%E6%B9%AF%E7%95%91%20%E3%81%BE%E3%82%93%E3%81%A6%E3%82%93%20%E8%8D%89%E6%B4%A5%E7%94%BA" target="_blank" rel="noopener">草津湯畑 まんてん</a></b><span class="rt">3.49</span>　釜飯、天婦羅，湯畑旁的 2 樓。<span class="meta">午餐 11:00–15:00｜沒有公休日｜可訂位</span></li>
+          <li><b><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%B0%B4%E7%A9%82%20%E8%8D%89%E6%B4%A5%E6%B8%A9%E6%B3%89%20%E3%81%86%E3%81%A9%E3%82%93" target="_blank" rel="noopener">水穂</a></b><span class="rt">3.47</span>　湯畑前的烏龍麵店，晚上變居酒屋。<span class="meta">午餐 11:00–15:00｜週四休，1/15 可以去｜只收現金</span></li>
+          <li><b>點心</b><ul class="sub"><li><strong><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%9D%BE%E3%82%80%E3%82%89%E9%A5%85%E9%A0%AD%20%E8%8D%89%E6%B4%A5" target="_blank" rel="noopener">松むら饅頭</a></strong><span class="rt">3.59</span>　溫泉饅頭｜8:00–17:00｜週二、三休</li><li><strong><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%9C%AC%E5%AE%B6%E3%81%A1%E3%81%A1%E3%82%84%20%E6%B9%AF%E7%95%91%E5%BA%97" target="_blank" rel="noopener">本家ちちや 湯畑店</a></strong><span class="rt">3.53</span>　溫泉饅頭｜8:30–19:00</li><li><strong><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E8%8D%89%E6%B4%A5%E6%B8%A9%E6%B3%89%E3%83%97%E3%83%AA%E3%83%B3" target="_blank" rel="noopener">草津温泉プリン</a></strong><span class="rt">3.52</span>　布丁｜10:00–17:00（依季節調整）｜不定休</li></ul></li>
+          <li><b>在地口味</b>　舞茸天婦羅配熱蕎麥，冬天最對味；伴手禮常見的是花豆（高原種的大顆紅花菜豆）煮成的甜豆。</li>
+        </ul>
+      </details>
+    </div>
+  </div>
+
+  <div class="day day--kusatsu" id="d04">
+    <div class="rail"><div class="dno">D04</div><div class="dt">1/15 五</div><div class="base">草津</div></div>
+    <div class="body">
+      <h4>溫泉街一整天<span class="tag tag--rest">慢</span></h4>
+      <ul>
+        <li><strong>早上的湯畑</strong>：氣溫最低的時候蒸氣最濃，人也最少。</li>
+        <li>前一天沒看到湯もみ的話，上午也有三場（官網列到 12 月的是 9:30、10:00、10:30，1 月的還沒公布）。</li>
+        <li><strong><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E8%A5%BF%E3%81%AE%E6%B2%B3%E5%8E%9F%E9%9C%B2%E5%A4%A9%E9%A2%A8%E5%91%82" target="_blank" rel="noopener">西の河原露天風呂</a></strong>：溫泉街西邊的大露天風呂。冬季（12/1–3/31）9:00–20:00、最後入場 19:30，大人 ¥800。毛巾現場買，小的 ¥380、大的 ¥1,700。<strong>每週五 17:30–20:00 是「混浴の日」</strong>：男湯改成混浴、要穿湯浴衣（女性租借 ¥400，男性免費）。想男女分開泡，17:30 以前去。</li>
+        <li>午餐在溫泉街（店見 D03）。下午回飯店泡湯、休息。</li>
+        <li><strong>晚餐</strong>：第二晚在館內的蕎麥割烹 SAI，吃十割蕎麥會席。</li>
+      </ul>
+
+      <details class="blk">
+        <summary>看點<span class="cnt">5 則</span></summary>
+        <ul>
+          <li><strong>湯畑</strong>：溫泉街正中央的源泉，熱水流過一排木槽降溫，再送到周邊的旅館。木槽底部沉積的「湯の花」會定期採收，做成入浴劑賣。</li>
+          <li><strong>湯もみ</strong>：草津的源泉太燙，加冷水又會把湯沖淡，所以用長木板攪動讓它自己降溫。熱乃湯的表演就是這個動作，配上「草津節」的歌。</li>
+          <li><strong>日本三名泉</strong>：江戶時代的儒學者林羅山，把草津、有馬、下呂並列為三名泉。</li>
+          <li><strong>貝爾茲（Erwin von Bälz）</strong>：明治時期在東京大學教醫學的德國醫師，寫文章向國外介紹草津的溫泉。溫泉街上有以他命名的街道和紀念館。</li>
+          <li><strong>酸性很強</strong>：草津的湯是強酸性，皮膚敏感的人泡久了會刺痛，第一次先泡短一點。</li>
+        </ul>
+      </details>
+    </div>
+  </div>
+
+  <div class="day day--tokyo" id="d05">
+    <div class="rail"><div class="dno">D05</div><div class="dt">1/16 六</div><div class="base">草津 → 東京</div></div>
+    <div class="body">
+      <h4>下山，回大井町<span class="tag tag--move">移動</span></h4>
+      <ul>
+        <li>早上再泡一次，11:00 前退房，搭計程車到<a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E8%8D%89%E6%B4%A5%E6%B8%A9%E6%B3%89%E3%83%90%E3%82%B9%E3%82%BF%E3%83%BC%E3%83%9F%E3%83%8A%E3%83%AB&amp;query_place_id=ChIJid9Q0h_nHWARrPdwP7bCYSQ" target="_blank" rel="noopener">巴士總站</a>。</li>
+        <li>上巴士前吃點東西：まつもと 10:30 就開；或買溫泉饅頭帶上車。</li>
+        <li><strong>草津溫泉 12:00 → 長野原草津口 12:25</strong>：JR 巴士。</li>
+        <li><strong>長野原草津口 13:07 → 上野 15:26</strong>：特急「草津・四万」。</li>
+        <li>京濱東北線回大井町，入住、領回大行李。晚餐在大井町。</li>
+        <li>想在草津多待：<strong>14:40 的巴士接 15:43 的特急，18:09 到上野</strong>。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="day day--tokyo" id="d06">
+    <div class="rail"><div class="dno">D06</div><div class="dt">1/17 日</div><div class="base">明治神宮 → 原宿</div></div>
+    <div class="body">
+      <h4>明治神宮，下午原宿、表參道<span class="tag tag--city">東京</span></h4>
+      <ol class="tl">
+        <li><time>08:30</time><span>大井町出發：京濱東北線到品川轉山手線，到<strong>原宿</strong>約 22 分鐘、¥253。</span></li>
+        <li><time>09:00</time><span><strong><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%98%8E%E6%B2%BB%E7%A5%9E%E5%AE%AE" target="_blank" rel="noopener">明治神宮</a></strong>（一月 6:40–16:20）：從原宿站旁的入口走森林參道，約 10 分鐘到本殿。</span></li>
+        <li><time>09:40</time><span><strong><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%98%8E%E6%B2%BB%E7%A5%9E%E5%AE%AE%E5%BE%A1%E8%8B%91" target="_blank" rel="noopener">御苑</a></strong>（9:00–16:00，¥500）：清正井。</span></li>
+        <li><time>10:30</time><span><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%98%8E%E6%B2%BB%E7%A5%9E%E5%AE%AE%E3%83%9F%E3%83%A5%E3%83%BC%E3%82%B8%E3%82%A2%E3%83%A0" target="_blank" rel="noopener">明治神宮博物館</a>（10:00–16:30，¥1,000，週四休）。一月的展期還沒公布，換展期間休館，可以跳過。</span></li>
+        <li><time>11:30</time><span>午餐（原宿、表參道）。</span></li>
+        <li><time>13:00</time><span>竹下通 → 表參道 → 表參道之丘、貓街（キャットストリート）一帶逛街。</span></li>
+        <li><time>15:30</time><span>小杉湯原宿泡湯，或找家店喝下午茶。</span></li>
+        <li><time>17:30</time><span>晚餐在原宿或澀谷。回程從澀谷搭往新木場的埼京線，直達大井町約 10 分鐘、¥409。</span></li>
+      </ol>
+
+      <details class="blk">
+        <summary>吃喝<span class="cnt">6 家</span></summary>
+        <ul class="picks">
+          <li><b><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=PRETTY%20PORK%20FACTORY%20%E3%83%8F%E3%83%A9%E3%82%AB%E3%83%89" target="_blank" rel="noopener">PRETTY PORK FACTORY &amp; KATSU プリポー</a></b><span class="rt">3.73</span>　炸豬排，在ハラカド 5 樓。<span class="meta">11:00–16:00（點餐到 14:30）、17:00–23:00｜午餐約 ¥3,000–4,000｜可訂位；里肌帶約 1 公分的肥肉，怕油就點肩里肌或腰內</span></li>
+          <li><b><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E9%BA%BA%E6%95%A3%20%E7%A5%9E%E5%AE%AE%E5%89%8D" target="_blank" rel="noopener">麺散</a></b><span class="rt">3.58</span>　烏龍麵，明治神宮前站附近，便宜。<span class="meta">11:30–22:00｜約 ¥1,000｜只收信用卡和電子支付，不收現金</span></li>
+          <li><b><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E8%8C%B6%E6%B4%92%20%E9%87%91%E7%94%B0%E4%B8%AD%20%E8%A1%A8%E5%8F%82%E9%81%93" target="_blank" rel="noopener">茶洒 金田中</a></b><span class="rt">3.68</span>　料亭「金田中」開的店，午餐是日式餐點，14:00 以後是甜點、喝茶的時段。<span class="meta">午餐 11:30–14:00（最後點餐）｜午餐約 ¥4,000–5,000｜可訂位</span></li>
+          <li><b><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%81%A8%E3%82%93%E3%81%8B%E3%81%A4%20%E3%81%BE%E3%81%84%E6%B3%89%20%E9%9D%92%E5%B1%B1%E6%9C%AC%E5%BA%97" target="_blank" rel="noopener">とんかつ まい泉 青山本店</a></b><span class="rt">3.44</span>　老牌炸豬排。<span class="meta">11:00–22:00｜週末只有宴席套餐能訂，一般要現場排</span></li>
+          <li><b>點心</b><ul class="sub"><li><strong><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=HIGASHIYA%20man%20%E8%A1%A8%E5%8F%82%E9%81%93" target="_blank" rel="noopener">HIGASHIYA man</a></strong><span class="rt">3.70</span>　和菓子小饅頭，表參道｜11:00–18:00｜週二休｜店內不能拍照</li><li><strong><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%9E%E3%83%AA%E3%82%AA%E3%83%B3%E3%82%AF%E3%83%AC%E3%83%BC%E3%83%97%20%E7%AB%B9%E4%B8%8B%E9%80%9A%E5%BA%97" target="_blank" rel="noopener">マリオンクレープ 竹下通店</a></strong><span class="rt">3.10</span>　可麗餅｜10:00–21:00</li></ul></li>
+        </ul>
+      </details>
+
+      <details class="blk">
+        <summary>玩<span class="cnt">3 項</span></summary>
+        <ul>
+          <li><strong><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%B0%8F%E6%9D%89%E6%B9%AF%E5%8E%9F%E5%AE%BF%20%E3%83%8F%E3%83%A9%E3%82%AB%E3%83%89" target="_blank" rel="noopener">小杉湯原宿</a></strong>：高圓寺老錢湯「小杉湯」開的分店，在ハラカド地下 1 樓，招牌是牛奶浴和冷熱交替泡。7:00–23:00，週四休，大人 ¥600（東京錢湯 2026/8/1 起的統一價）。走了一天，下午泡一下再去吃晚餐。</li>
+          <li><strong><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E7%AB%B9%E4%B8%8B%E9%80%9A%E3%82%8A%20%E5%8E%9F%E5%AE%BF" target="_blank" rel="noopener">竹下通</a></strong>：週日人最多，可麗餅、小店一路排過去。</li>
+          <li><strong><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E4%BB%A3%E3%80%85%E6%9C%A8%E5%85%AC%E5%9C%92" target="_blank" rel="noopener">代々木公園原宿口</a></strong>：週末常有梳飛機頭、穿皮衣的人放老搖滾跳舞。民間自發，沒有固定時間。</li>
+        </ul>
+      </details>
+
+      <details class="blk">
+        <summary>看點<span class="cnt">6 則</span></summary>
+        <ul>
+          <li><strong>祭誰</strong>：明治天皇和昭憲皇太后，1920 年鎮座。整片森林是建造時全國捐獻的約 10 萬株樹種出來的人造林。</li>
+          <li><strong>參拜</strong>：二拜、二拍手、一拜。御朱印在神樂殿前的「長殿」，9:00 到閉門。</li>
+          <li><strong>籤「大御心」</strong>：不分吉凶，抽到的是明治天皇或昭憲皇太后的一首和歌（兩位各 15 首）加上解說。</li>
+          <li><strong>酒樽與酒桶</strong>：參道一側堆著獻納的日本酒酒樽，對面是法國勃根地的葡萄酒桶。</li>
+          <li><strong>御苑</strong>：江戶時代加藤家、井伊家的別邸庭園，明治天皇為身體較弱的昭憲皇太后整理成散步庭園。清正井相傳是加藤清正挖的，每分鐘湧出約 60 公升，水溫一年四季約 15°C。</li>
+          <li><strong>休息</strong>：原宿口鳥居前的「杜のテラス」、南參道右側的「フォレストテラス」都有輕食。</li>
+        </ul>
+      </details>
+    </div>
+  </div>
+
+  <div class="day day--tokyo" id="d07">
+    <div class="rail"><div class="dno">D07</div><div class="dt">1/18 一</div><div class="base">合羽橋 → 淺草</div></div>
+    <div class="body">
+      <h4>合羽橋道具街，下午淺草寺，傍晚看亡者送り<span class="tag tag--city">東京</span></h4>
+      <ol class="tl">
+        <li><time>08:50</time><span>大井町出發：京濱東北線到神田轉銀座線，到<strong>田原町</strong>約 37 分鐘、¥431。</span></li>
+        <li><time>09:30</time><span>早餐：ペリカンカフェ（9:00 開）。</span></li>
+        <li><time>10:00</time><span><strong><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%90%88%E7%BE%BD%E6%A9%8B%E9%81%93%E5%85%B7%E8%A1%97&amp;query_place_id=ChIJXYV-6JWOGGAR85vIZbM1RCE" target="_blank" rel="noopener">合羽橋道具街</a></strong>由南往北逛，大多數店 10:00–17:00。</span></li>
+        <li><time>11:00</time><span>元祖食品サンプル屋做食品模型（有預約的話，約 40 分鐘）。</span></li>
+        <li><time>12:00</time><span>走到淺草吃午餐。</span></li>
+        <li><time>13:30</time><span><strong><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%B5%85%E8%8D%89%E5%AF%BA%20%E6%9C%AC%E5%A0%82" target="_blank" rel="noopener">淺草寺</a></strong>：雷門 → 仲見世 → 寶藏門 → 本堂（17:00 關門）→ 五重塔、淺草神社，沿路吃點心。</span></li>
+        <li><time>16:30</time><span><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%B5%85%E8%8D%89%E6%96%87%E5%8C%96%E8%A6%B3%E5%85%89%E3%82%BB%E3%83%B3%E3%82%BF%E3%83%BC" target="_blank" rel="noopener">淺草文化觀光中心</a> 8 樓展望台（免費，9:00–22:00），看仲見世和晴空塔。這天日落 16:54。</span></li>
+        <li><time>17:40</time><span>回本堂前找好位置。</span></li>
+        <li><time>18:00</time><span><strong>亡者送り</strong>，前後約 10 分鐘。</span></li>
+        <li><time>18:15</time><span>晚餐，飯後看點燈的雷門、五重塔（日落到 23:00）。</span></li>
+        <li><time>20:30</time><span>回程：都營淺草線到新橋轉京濱東北線，約 35 分鐘、¥429。</span></li>
+      </ol>
+
+      <div class="verdict">
+        <h5>亡者送り：一年只有這一晚</h5>
+        <p>1/12–1/18，淺草寺的住持們輪班、日夜不停修一套叫「溫座秘法陀羅尼會」的法，平常不公開。最後一天傍晚，本堂的燈全部熄掉、壇上的法器被推倒，兩個舉著火把的鬼從本堂正面石階走下來，繞香爐三圈、繞寶藏門三圈，最後跑到錢塚地藏堂旁，把火把丟進事先挖好的洞裡。</p>
+        <p>鬼一路會把火把往地上敲，大家撿掉下來的炭渣帶回家除厄。前後約 10 分鐘，結束就散場。</p>
+      </div>
+
+      <details class="blk">
+        <summary>玩：合羽橋<span class="cnt">5 項</span></summary>
+        <ul>
+          <li><strong>刀</strong>：<a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%81%A4%E3%81%B0%E5%B1%8B%E5%8C%85%E4%B8%81%E5%BA%97%20%E5%90%88%E7%BE%BD%E6%A9%8B" target="_blank" rel="noopener">つば屋庖丁店</a>（1956 年創業，平日 9:00–18:00）、<a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%81%8B%E3%81%BE%E3%81%9F%E5%88%83%E7%A0%94%E7%A4%BE%20%E5%90%88%E7%BE%BD%E6%A9%8B" target="_blank" rel="noopener">かまた刃研社</a>（1923 年從磨刀起家，10:00–18:00）、<a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E8%97%A4%E6%AC%A1%E9%83%8E%E3%83%8A%E3%82%A4%E3%83%95%E3%82%AE%E3%83%A3%E3%83%A9%E3%83%AA%E3%83%BC%20%E6%9D%B1%E4%BA%AC%E5%BA%97" target="_blank" rel="noopener">藤次郎ナイフギャラリー東京店</a>（新潟燕市的刀廠，10:00–17:30，週三休）、<a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%B8%85%E5%8A%A9%E5%88%83%E7%89%A9%20%E5%90%88%E7%BE%BD%E6%A9%8B" target="_blank" rel="noopener">清助刃物</a>（11:00–17:00）。</li>
+          <li><strong>廚具</strong>：<a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E9%A3%AF%E7%94%B0%E5%B1%8B%20%E5%90%88%E7%BE%BD%E6%A9%8B%20%E6%96%99%E7%90%86%E9%81%93%E5%85%B7" target="_blank" rel="noopener">飯田屋</a>（11:00–18:00）。<strong>咖啡器具</strong>：<a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%A6%E3%83%8B%E3%82%AA%E3%83%B3%20%E5%90%88%E7%BE%BD%E6%A9%8B&amp;query_place_id=ChIJfSPr7pWOGGAR7aNGCEJrC28" target="_blank" rel="noopener">ユニオン</a>（10:00–18:00，週二休）。</li>
+          <li><strong>食器</strong>：<a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%92%8C%E3%81%AE%E5%99%A8%20%E7%94%B0%E7%AA%AF%20%E5%90%88%E7%BE%BD%E6%A9%8B" target="_blank" rel="noopener">和の器 田窯</a>（各產地的陶瓷，10:00–18:00）、<a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%8B%E3%82%A4%E3%83%9F%E6%B4%8B%E9%A3%9F%E5%99%A8%E5%BA%97%20%E6%9D%BE%E3%81%8C%E8%B0%B7" target="_blank" rel="noopener">ニイミ洋食器店</a>（屋頂有巨大廚師頭像，10:00–17:45）。</li>
+          <li><strong>食品模型</strong>：<a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%85%83%E7%A5%96%E9%A3%9F%E5%93%81%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB%E5%B1%8B%20%E5%90%88%E7%BE%BD%E6%A9%8B%E5%BA%97" target="_blank" rel="noopener">元祖食品サンプル屋 合羽橋店</a>（10:00–17:30）。體驗是做兩件天婦羅加一顆生菜，¥3,300，約 40 分鐘，要預約；11:00、11:30 各一場，14:00 起每半小時一場。只看不做也可以逛店裡的成品。</li>
+          <li>幾乎每家都賣一般客人。刀只能放託運行李。</li>
+        </ul>
+      </details>
+
+      <details class="blk">
+        <summary>吃喝：淺草<span class="cnt">17 家</span></summary>
+        <ul class="picks">
+          <li><b><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%9A%E3%83%AA%E3%82%AB%E3%83%B3%E3%82%AB%E3%83%95%E3%82%A7%20%E7%94%B0%E5%8E%9F%E7%94%BA" target="_blank" rel="noopener">ペリカンカフェ</a></b><span class="rt">3.70</span>　1942 年創業的「パンのペリカン」開的咖啡店，吃自家麵包做的早餐。<span class="meta">週一 9:00–17:00｜約 ¥1,000–2,000｜可刷卡、Suica｜週日休。本店只賣吐司和餐包兩種，8:00–17:00，賣完提早關</span></li>
+          <li><b><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E4%B8%A6%E6%9C%A8%E8%97%AA%E8%95%8E%E9%BA%A6%20%E6%B5%85%E8%8D%89" target="_blank" rel="noopener">並木藪蕎麦</a></b><span class="rt">3.65</span>　雷門附近的老字號蕎麥麵，午餐吃清淡一點，晚上留給壽喜燒。<span class="meta">週一 11:00–19:00｜約 ¥1,000–2,000｜不能訂位｜可刷卡、Suica｜週三、四休</span></li>
+          <li><b>其他午餐</b><ul class="sub"><li><strong><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%A8%E3%82%B7%E3%82%AB%E3%83%9F%20%E6%B5%85%E8%8D%89%20%E6%B4%8B%E9%A3%9F" target="_blank" rel="noopener">ヨシカミ</a></strong><span class="rt">3.71</span>　洋食｜週一 11:30–21:30｜週三休</li><li><strong><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%88%9D%E5%B0%8F%E5%B7%9D%20%E6%B5%85%E8%8D%89%20%E3%81%86%E3%81%AA%E3%81%8E" target="_blank" rel="noopener">初小川</a></strong><span class="rt">3.74</span>　鰻魚｜12:00–13:30｜約 ¥4,000–5,000｜只收現金｜約 10 天前開放訂位</li><li><strong><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%A4%A7%E9%BB%92%E5%AE%B6%E5%A4%A9%E9%BA%A9%E7%BE%85%20%E6%9C%AC%E5%BA%97%20%E6%B5%85%E8%8D%89" target="_blank" rel="noopener">大黒家天麩羅 本店</a></strong><span class="rt">3.49</span>　天丼｜11:00–20:00｜只收現金、不能訂位</li></ul></li>
+          <li><b>邊逛邊吃</b><ul class="sub"><li><strong><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%B5%85%E8%8D%89%20%E8%8A%B1%E6%9C%88%E5%A0%82%20%E6%9C%AC%E5%BA%97%20%E6%B5%85%E8%8D%892%E4%B8%81%E7%9B%AE" target="_blank" rel="noopener">浅草 花月堂</a></strong><span class="rt">3.57</span>　巨大菠蘿麵包｜9:00 起，賣完約 16:00 收</li><li><strong><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E4%BA%80%E5%8D%81%20%E6%B5%85%E8%8D%89%20%E3%81%A9%E3%82%89%E7%84%BC%E3%81%8D" target="_blank" rel="noopener">亀十</a></strong><span class="rt">3.79</span>　銅鑼燒｜10:00–19:00</li><li><strong><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%B5%85%E8%8D%89%E6%B5%AA%E8%8A%B1%E5%AE%B6%20%E3%81%9F%E3%81%84%E7%84%BC%E3%81%8D" target="_blank" rel="noopener">浅草浪花家</a></strong><span class="rt">3.76</span>　鯛魚燒｜週一 10:00–19:00｜週二休</li><li><strong><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%A3%BD%E3%80%85%E5%96%9C%E5%9C%92%20%E6%B5%85%E8%8D%89%E6%9C%AC%E5%BA%97&amp;query_place_id=ChIJidgn3MGOGGARVSZF3Mq9vho" target="_blank" rel="noopener">壽々喜園</a></strong><span class="rt">3.69</span>　抹茶冰淇淋｜11:00–17:00</li><li><strong><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E8%88%9F%E5%92%8C%20%E6%9C%AC%E5%BA%97%20%E6%B5%85%E8%8D%89" target="_blank" rel="noopener">舟和 本店</a></strong><span class="rt">3.51</span>　元祖みつ豆｜2 樓喫茶 10:30–19:00</li><li><strong><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%A2%85%E3%82%80%E3%82%89%20%E6%B5%85%E8%8D%89%20%E8%B1%86%E3%81%8B%E3%82%93" target="_blank" rel="noopener">梅むら</a></strong><span class="rt">3.77</span>　豆かん ¥500｜週一 12:30–18:30｜只收現金</li><li><strong><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%95%E3%83%AB%E3%83%BC%E3%83%84%E3%83%91%E3%83%BC%E3%83%A9%E3%83%BC%E3%82%B4%E3%83%88%E3%83%BC%20%E6%B5%85%E8%8D%89" target="_blank" rel="noopener">フルーツパーラーゴトー</a></strong><span class="rt">3.77</span>　水果聖代｜週一 11:00–19:00｜只收現金</li></ul></li>
+          <li><b><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E7%B1%B3%E4%B9%85%E6%9C%AC%E5%BA%97%20%E6%B5%85%E8%8D%89" target="_blank" rel="noopener">米久本店</a></b><span class="rt">3.60</span>　看完亡者送り走過去吃壽喜燒，最順。<span class="meta">週一 12:00–21:00（最後點餐 20:00）｜晚餐約 ¥6,000–8,000｜只收現金；10 人以上才能訂位，一般現場排</span></li>
+          <li><b><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%B5%85%E8%8D%89%E4%BB%8A%E5%8D%8A%20%E5%9B%BD%E9%9A%9B%E9%80%9A%E3%82%8A%E6%9C%AC%E5%BA%97" target="_blank" rel="noopener">浅草今半 国際通り本店</a></b><span class="rt">3.62</span>　想吃高檔壽喜燒就訂這家。<span class="meta">11:30–21:30（最後點餐 20:30），<strong>19:00 前要入店</strong>｜晚餐約 ¥15,000–20,000｜只接受電話訂位 03-3841-1114，午餐不能訂</span></li>
+          <li><b><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E9%A7%92%E5%BD%A2%E3%81%A9%E3%81%9C%E3%81%86%20%E6%9C%AC%E5%BA%97" target="_blank" rel="noopener">駒形どぜう 本店</a></b><span class="rt">3.59</span>　1801 年創業的泥鰍鍋老店。<span class="meta">11:00–20:00｜不定休｜不能訂位</span></li>
+          <li><b>喝一杯</b><ul class="sub"><li><strong><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E7%A5%9E%E8%B0%B7%E3%83%90%E3%83%BC%20%E6%B5%85%E8%8D%89" target="_blank" rel="noopener">神谷バー</a></strong><span class="rt">3.49</span>　1880 年創業，招牌是 1882 年做出來的「デンキブラン」｜11:00–20:00｜週二和每月兩個週一公休，1/18 有沒有開看官網</li><li><strong><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%B5%85%E8%8D%89%E3%82%B5%E3%83%B3%E3%83%9C%E3%82%A2" target="_blank" rel="noopener">浅草サンボア</a></strong><span class="rt">3.76</span>　酒吧｜週一 14:00–23:00</li></ul></li>
+        </ul>
+      </details>
+
+      <details class="blk">
+        <summary>看點<span class="cnt">5 則</span></summary>
+        <ul>
+          <li><strong>雷門</strong>：正式名稱是「風雷神門」，左右是風神和雷神。現在的門是 1960 年松下幸之助捐建；大燈籠高 3.9 公尺、重約 700 公斤，走到下面抬頭看，燈籠底部有龍的雕刻。</li>
+          <li><strong>本堂天花板</strong>：中央是川端龍子的「龍之圖」，左右是堂本印象的「天人之圖」「散華之圖」。</li>
+          <li><strong>寺的年紀</strong>：相傳 628 年，兩兄弟在隅田川捕魚時撈到觀音像，這就是淺草寺的起點。</li>
+          <li><strong>1/18</strong>：每月 18 日是觀音緣日，一年的第一個叫「初觀音」。本堂每天 6:30、10:00、14:00 有定時法會。</li>
+          <li><strong>合羽橋</strong>：約七成店週日和國定假日休息，大部分 10:00–17:00。</li>
+        </ul>
+      </details>
+    </div>
+  </div>
+
+  <div class="day day--tokyo" id="d08">
+    <div class="rail"><div class="dno">D08–09</div><div class="dt">1/19 二・1/20 三</div><div class="base">自由</div></div>
+    <div class="body">
+      <h4>兩天自由，可以這樣用<span class="tag tag--rest">自由</span></h4>
+      <div class="blk">
+        <h5>大相撲（要先搶到票）</h5>
+        <ul>
+          <li><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E4%B8%A1%E5%9B%BD%E5%9B%BD%E6%8A%80%E9%A4%A8" target="_blank" rel="noopener">兩國國技館</a>，初場所 1/10–1/24。大井町 → 兩國：京濱東北線到秋葉原轉總武線，約 27 分鐘、¥253。</li>
+          <li>9:00 開場，十兩約 14:15 進場、幕內約 15:40 進場，18:00 結束。下午兩點多到就夠。</li>
+          <li>晚餐吃相撲火鍋：<strong><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%81%A1%E3%82%83%E3%82%93%E3%81%93%20%E5%B7%9D%E5%B4%8E%20%E4%B8%A1%E5%9B%BD" target="_blank" rel="noopener">ちゃんこ 川﨑</a></strong><span class="rt">3.54</span>（17:00–21:30，週三、週日休，所以只有 1/19 吃得到；只收現金）。</li>
+        </ul>
+      </div>
+      <div class="blk">
+        <h5>大井町周邊</h5>
+        <ul>
+          <li><strong><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%81%97%E3%81%AA%E3%81%8C%E3%82%8F%E6%B0%B4%E6%97%8F%E9%A4%A8" target="_blank" rel="noopener">しながわ水族館</a></strong>：10:00–17:00，週二休（1/19 休、1/20 有開）；大井町站東口 6 號站牌有免費接駁車。</li>
+          <li><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%88%B8%E8%B6%8A%E9%8A%80%E5%BA%A7%E5%95%86%E5%BA%97%E8%A1%97" target="_blank" rel="noopener">戸越銀座商店街</a>（約 400 家店）、舊東海道品川宿、<a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%B3%89%E5%B2%B3%E5%AF%BA&amp;query_place_id=ChIJh64KT6uLGGARKx4cxgOaL54" target="_blank" rel="noopener">泉岳寺</a>。吃的看 <a href="https://claude.ai/artifact/MwyXTgGTm1BmDyBN4pJ4UW">大井町站周邊餐廳</a>。</li>
+          <li><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E9%AB%98%E8%BC%AA%E3%82%B2%E3%83%BC%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A4%E3%82%B7%E3%83%86%E3%82%A3" target="_blank" rel="noopener">高輪 Gateway City</a>：隈研吾設計的 MoN Takanawa 每月第 2 個週二休，1/19 是第 3 個週二，有開。</li>
+        </ul>
+      </div>
+      <div class="blk">
+        <h5>日歸</h5>
+        <div class="tw">
+        <table class="stack">
+          <thead><tr><th>去哪</th><th class="n">單程時間</th><th class="n">單程車資</th><th>適不適合</th></tr></thead>
+          <tbody>
+            <tr class="hit"><td><strong>橫濱</strong></td><td data-l="單程" class="n">25m</td><td data-l="車資" class="n">¥530</td>
+              <td><strong>最順</strong>。半天就能來回：中華街、紅磚倉庫、山手西洋館</td></tr>
+            <tr class="hit"><td><strong>鎌倉</strong></td><td data-l="單程" class="n">約 48m</td><td data-l="車資" class="n">¥1,794</td>
+              <td>橫須賀線直達。冬天遊客少，報國寺竹林、長谷寺、江之電沿線，<strong>要一整天</strong></td></tr>
+            <tr><td>日光</td><td data-l="單程" class="n">最速 1h41m</td><td data-l="車資" class="n">¥5,260<br><span style="font-size:12px">慢車 3h04m／¥1,610</span></td>
+              <td>東照宮冬天人少。中禪寺湖、華嚴瀑布一帶冬季交通受雪影響，只去東照宮一帶比較穩</td></tr>
+          </tbody>
+          <caption>從東京車站算（駅探，2026-09-04）。大井町在往橫濱、鎌倉的方向上，實際更近。日光的兩個數字分別是 JR 新幹線轉東武（快）與全程普通車（慢）。</caption>
+        </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="day day--tokyo" id="d10">
+    <div class="rail"><div class="dno">D10</div><div class="dt">1/21 四</div><div class="base">回台北</div></div>
+    <div class="body">
+      <h4>最後半天，傍晚回家<span class="tag tag--move">移動</span></h4>
+      <ul>
+        <li><strong>上午</strong>：在大井町最後採買（イトーヨーカドー 10:00–22:00），或去しながわ水族館（週四有開）。</li>
+        <li><strong>12:00 前退房</strong>（會員方案），大行李放 5 樓自助行李間，午餐在大井町。</li>
+        <li><strong>15:10 機場巴士</strong>：飯店那棟 1 樓 21 號站牌，15:54 到第 3 航廈；JL 99 18:05 起飛。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="stay">
+  <span class="sec-no">04 — 住</span>
+  <h2>兩間飯店（都已訂）</h2>
+
+  <h3><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%9B%E3%83%86%E3%83%AB%E3%83%A1%E3%83%88%E3%83%AD%E3%83%9D%E3%83%AA%E3%82%BF%E3%83%B3%20%E5%A4%A7%E4%BA%95%E7%94%BA%E3%83%88%E3%83%A9%E3%83%83%E3%82%AF%E3%82%B9" target="_blank" rel="noopener">ホテルメトロポリタン 大井町トラックス</a></h3>
+  <p class="lead">2026/3/28 開業，JR 大井町站 Tracks 口直結。訂的是 <strong>32.7㎡ 轉角雙床房（スーペリアコーナーツイン）＋加床</strong>，會員價、不含餐，前後兩段同一種房。</p>
+  <div class="tw">
+  <table class="fit">
+    <thead><tr><th>段</th><th>日期</th><th class="n">房價</th></tr></thead>
+    <tbody>
+      <tr><td>前段</td><td>1/12（二）–1/14（四），2 晚</td><td class="n">¥64,800</td></tr>
+      <tr><td>後段</td><td>1/16（六）–1/21（四），5 晚</td><td class="n">¥179,700</td></tr>
+    </tbody>
+    <caption>9/26 官網會員價，3 位成人 1 間房，含稅與服務費，東京都宿泊稅另收；實付以訂房確認信為準。會員方案退房 12:00。</caption>
+  </table>
+  </div>
+  <ul>
+    <li><strong>飯店裡</strong>：櫃台在 5 樓，5 樓有自助行李間（入住前、退房後都能放）。投幣洗脫烘在 8、10 樓，洗劑自動投入；免費微波爐和製冰機在 9、12 樓；24 小時健身房在 6 樓。</li>
+    <li><strong>同一棟（OIMACHI TRACKS）</strong>：超市ライフ／ビオラル、7-Eleven、ウエルシア藥妝都在 2 樓；餐廳有とんかつ檍、京鼎樓、神座拉麵、迴轉壽司，另有美食街 WELLSIDE TABLE 和 TOHO 電影院。</li>
+    <li><strong>站前</strong>：<a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%82%A4%E3%83%88%E3%83%BC%E3%83%A8%E3%83%BC%E3%82%AB%E3%83%89%E3%83%BC%20%E5%A4%A7%E4%BA%95%E7%94%BA%E5%BA%97" target="_blank" rel="noopener">イトーヨーカドー</a>（西口走 1 分鐘，10:00–22:00，地下是生鮮、1 樓熟食、2 樓藥妝，另有 DAISO）、アトレ大井町（有成城石井）、阪急大井町ガーデン（阪急食品館、ヤマダデンキ LABI）。</li>
+  </ul>
+
+  <h3><a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=%E7%95%8C%20%E8%8D%89%E6%B4%A5%20%E6%98%9F%E9%87%8E%E3%83%AA%E3%82%BE%E3%83%BC%E3%83%88" target="_blank" rel="noopener">界 草津</a></h3>
+  <p class="lead">星野リゾート「界」在草津的第一間，2026/6/7 開幕，94 間房。訂的是 <strong>和室（定員 3 名）48㎡、「90 日前優待」、含兩晚早晚餐，¥139,005</strong>。</p>
+  <ul>
+    <li><strong>房間</strong>：三張 200×95 公分的單人床，不用自己鋪布團。房內是淋浴間，泡湯去大浴場。牆上是群馬絲綢做的「シルクアート」，也就是界每一間都有的「ご当地部屋」。</li>
+    <li><strong>溫泉</strong>：大浴場引兩個源泉，萬代鉱源泉和西の河原源泉，可以泡著比較。</li>
+    <li><strong>晚餐</strong>：第一晚「上州豊伝會席」；第二晚在館內的蕎麥割烹 SAI，吃以十割蕎麥為主的會席。分 17:30、19:30 兩個時段，要上網預約。</li>
+    <li><strong>時間</strong>：入住 14:30、退房 11:00。客房備有作務衣和足袋。</li>
+    <li><strong>去溫泉街</strong>：館內有住客專用的隧道，出口在西の河原公園旁邊，從那裡走得到湯畑。</li>
+    <li><strong>沒有接送</strong>：巴士總站到飯店的路線巴士只開到 2026/10/31，町內巡迴巴士又不能帶大行李。一月直接搭計程車，約 10 分鐘。</li>
+  </ul>
+</section>
+
+<section id="move">
+  <span class="sec-no">05 — 行</span>
+  <h2>交通</h2>
+
+  <h3>東京 ⇄ 草津</h3>
+  <div class="tw">
+  <table class="stack">
+    <thead><tr><th>走法</th><th class="n">時間</th><th class="n">單程每人</th><th>說明</th></tr></thead>
+    <tbody>
+      <tr class="hit"><td><strong>上野 → 長野原草津口</strong><br>特急「草津・四万」＋JR 巴士 → 草津溫泉</td>
+        <td data-l="時間" class="n">2h18m＋25m</td><td data-l="單程每人" class="n">¥6,060 起<br><span style="font-size:12px">特急 5,280＋巴士 780</span></td>
+        <td><strong>走這條。</strong>平日一天兩班：上野 10:00、12:10 發；回程長野原草津口 13:07、15:43 發</td></tr>
+      <tr class="dim"><td>備案：北陸新幹線 東京 → 輕井澤<br>＋草軽交通急行巴士 → 草津溫泉</td>
+        <td data-l="時間" class="n">約 1h＋1h18m</td><td data-l="單程每人" class="n">¥8,370</td>
+        <td>特急買不到或停駛時用</td></tr>
+      <tr class="dim"><td>備案：上州ゆめぐり號（JR 巴士關東）<br>東京站八重洲南口 → 草津溫泉</td>
+        <td data-l="時間" class="n">約 4h</td><td data-l="單程每人" class="n">¥4,100 起</td>
+        <td>不用轉車，但最久</td></tr>
+      <tr><td>草津溫泉巴士總站 ⇄ 界 草津</td><td data-l="時間" class="n">約 10m</td><td data-l="單程每人" class="n">計程車<br><span style="font-size:12px">估 ¥1,500</span></td>
+        <td>飯店沒有接送</td></tr>
+    </tbody>
+    <caption>特急 1 號的時刻取自 JR 東日本官方時刻表，其他班次與票價取自駅探（2026-09-26）；特急費依日期不同，週六比平日貴 ¥200。JR 巴士取自 NAVITIME。1 月的特急時刻和巴士冬季時刻都還沒公布。新幹線票價取自 JR 官方票價表，草軽巴士和上州ゆめぐり號取自 NAVITIME（2026-09-25）。計程車費是估的。</caption>
+  </table>
+  </div>
+
+  <h3 id="book">訂特急票</h3>
+  <p>三位大人、普通車指定席。在 JR 東日本的訂票網站 <a href="https://www.eki-net.com/">えきねっと</a>（日文版）買不發紙本票的「チケットレス」特急券。開賣前一週可以先登記，開賣當天 10:00 由系統依序排位子。</p>
+  <div class="tw">
+  <table class="fit">
+    <thead><tr><th></th><th>去程</th><th>回程</th></tr></thead>
+    <tbody>
+      <tr><td>日期</td><td class="m">1/14（四）</td><td class="m">1/16（六）</td></tr>
+      <tr><td>車次</td><td>「草津・四万」1 號</td><td>「草津・四万」13:07 發那班</td></tr>
+      <tr class="hit"><td>區間</td><td><strong>上野 10:00 → 長野原草津口 12:18</strong></td><td><strong>長野原草津口 13:07 → 上野 15:26</strong></td></tr>
+      <tr class="hit"><td>提早登記</td><td><strong>12/7（一）14:00</strong> 起，到 12/14 9:54 截止</td><td><strong>12/9（三）14:00</strong> 起，到 12/16 9:54 截止</td></tr>
+      <tr><td>正式開賣</td><td>12/14（一）10:00</td><td>12/16（三）10:00</td></tr>
+      <tr class="dim"><td>沒訂到的備案</td><td>上野 12:10 → 14:34</td><td>長野原草津口 15:43 → 上野 18:09</td></tr>
+    </tbody>
+    <caption>提早登記的時段取自 JR 東日本 2026-03-26 新聞稿與えきねっと說明頁；1 號時刻取自 JR 東日本時刻表，其他班次取自駅探與 Ekitan（2026-09）。1 月時刻表還沒公布：訂票時查得到那一班，就表示那天有開。</caption>
+  </table>
+  </div>
+  <p><strong>每人費用</strong>：特急券約 ¥2,090–2,290（依日期不同），在えきねっと刷卡；車費 ¥3,190，進出站刷 Suica（長野原草津口可以刷 Suica，每人卡裡留夠餘額）。三人來回約 ¥32,300，另加 JR 巴士每人每趟 ¥780。</p>
+  <ol class="todo">
+    <li><b>現在：註冊會員</b><span>到 <a href="https://www.eki-net.com/">https://www.eki-net.com/</a> 註冊（免費），綁好信用卡。チケットレス特急券只收信用卡。</span></li>
+    <li><b>12/7 14:00 以後：登記去程</b><span>登入，查 1/14 上野 → 長野原草津口 10:00 那班，選三位大人、普通車指定席、チケットレス，送出登記。</span></li>
+    <li><b>12/9 14:00 以後：登記回程</b><span>同樣登記 1/16 長野原草津口 → 上野 13:07 那班。</span></li>
+    <li><b>12/14、12/16 10:00 以後：看結果</b><span>看通知信有沒有排到位子。登記不保證排到；沒排到就馬上自己上網買，那班滿了就改上表的備案班次。</span></li>
+    <li><b>搭車當天</b><span>刷 Suica 進站，坐訂到的座位。沒有紙本票，車掌查票時給他看えきねっと上的訂單畫面。</span></li>
+  </ol>
+  <div class="note">
+    <span class="clabel">另外要知道的</span>
+    <p>給外國旅客的英文版「JR-EAST Train Reservation」沒有查到能提早登記，要提早登記就用日文版。訂好之後可以改、可以退，但會收手續費。えきねっと偶爾有平日限定的五折特急券，目前查到的檔期不包括 1/14、1/16，照原價買。</p>
+  </div>
+
+  <h3>羽田 ⇄ 飯店：機場巴士</h3>
+  <p>京急、東急合營的機場巴士，站牌就在飯店那一棟：OIMACHI TRACKS 1 樓北側圓環 21 號站牌，下車搭電梯到 5 樓櫃台。大人單程 ¥800，大行李放車底行李艙（每件 50×60×120 公分、30 公斤以內），不用預約。</p>
+  <div class="tw">
+  <table class="fit">
+    <thead><tr><th>日期</th><th>班次</th><th>說明</th></tr></thead>
+    <tbody>
+      <tr class="hit"><td class="m">1/12 二</td><td>第 3 航廈 10 號站牌 <strong>14:05</strong> → 飯店 <strong>14:57</strong></td><td>落地後一小時內出關就趕得上</td></tr>
+      <tr><td class="m">1/12 二</td><td>第 3 航廈 10 號站牌 15:05 → 飯店 15:54</td><td>沒趕上 14:05 就搭這班</td></tr>
+      <tr class="hit"><td class="m">1/21 四</td><td>飯店 21 號站牌 <strong>15:10</strong> → 第 3 航廈 <strong>15:54</strong></td><td>JL 99 18:05 起飛；想早一點就搭 14:45，15:21 到</td></tr>
+    </tbody>
+    <caption>京急巴士、東急巴士官網 2026-09-26 查，是 7/1 起的現行時刻，官網沒分平日假日，12 月再對一次。車程約 50 分鐘，因為會先繞第 2、第 1 航廈。在羽田上車：到第 3 航廈 2 樓到達大廳的巴士櫃台或京急售票機買票（現金、信用卡），或當天上網買；用 IC 卡要先向櫃台或站務拿「時刻指定券」。在大井町上車：上車時付，現金、IC 卡、信用卡感應都可以。行李艙能不能全放，當天由司機看空間決定。</caption>
+  </table>
+  </div>
+  <div class="note">
+    <span class="clabel">去程建議包車</span>
+    <p>1/12 落地後要領六件行李、過海關，出關時間不好抓；搭巴士如果剛好錯過 14:05，要在機場等將近一小時。包車門到門約 20 分鐘，六件一次載走。一般計程車一台標準只放兩個大箱，六件要叫三台，不划算。</p>
+  </div>
+
+  <h3>東京市內：從大井町出發</h3>
+  <div class="tw">
+  <table class="flow grid g4">
+    <thead><tr><th>去哪</th><th>怎麼搭</th><th class="n">時間</th><th class="n">IC 車資</th></tr></thead>
+    <tbody>
+      <tr><td>神樂坂（1/13）</td><td>京濱東北線 → 新橋轉銀座線 → 日本橋轉東西線</td><td class="n">41 分</td><td class="n">¥418</td></tr>
+      <tr><td>飯田橋 → 東池袋</td><td>有樂町線直達，地下通道 3 分鐘到陽光城</td><td class="n">7 分</td><td class="n">¥178</td></tr>
+      <tr><td>池袋 → 大井町</td><td>往新木場的埼京線直達</td><td class="n">25 分</td><td class="n">¥463</td></tr>
+      <tr><td>原宿（1/17）</td><td>京濱東北線 → 品川轉山手線</td><td class="n">22 分</td><td class="n">¥253</td></tr>
+      <tr><td>澀谷 → 大井町</td><td>往新木場的埼京線直達</td><td class="n">10 分</td><td class="n">¥409</td></tr>
+      <tr><td>田原町（1/18）</td><td>京濱東北線 → 神田轉銀座線</td><td class="n">37 分</td><td class="n">¥431</td></tr>
+      <tr><td>淺草 → 大井町</td><td>都營淺草線 → 新橋轉京濱東北線</td><td class="n">35 分</td><td class="n">¥429</td></tr>
+      <tr><td>兩國（相撲）</td><td>京濱東北線 → 秋葉原轉總武線</td><td class="n">27 分</td><td class="n">¥253</td></tr>
+      <tr><td>上野（1/14）</td><td>京濱東北線直達</td><td class="n">26 分</td><td class="n">¥253</td></tr>
+    </tbody>
+    <caption>Yahoo!乗換案内（2026-10 的平日／週日時刻），時間含轉車，是大約的數字。埼京線直達大井町的班次會開進臨海線，所以比只搭 JR 貴；不是每班都直達，搭到只到大崎的車就在大崎轉臨海線。</caption>
+  </table>
+  </div>
+</section>
+
+<section id="wear">
+  <span class="sec-no">06 — 衣</span>
+  <h2>草津：穿什麼</h2>
+  <p class="lead">草津一月是雪國。下面是氣象廳的平年值，拿東京對照。</p>
+
+  <div class="tw">
+  <table class="stack chips">
+    <thead><tr><th>1 月平年值（1991–2020）</th><th class="n">平均</th><th class="n">白天最高</th><th class="n">清晨最低</th><th class="n">當月降雪</th></tr></thead>
+    <tbody>
+      <tr class="hit"><td><strong>草津</strong></td><td data-l="平均" class="n">-4.1°C</td><td data-l="白天最高" class="n">-0.4°C</td><td data-l="清晨最低" class="n">-7.8°C</td>
+        <td data-l="當月降雪" class="n">175 cm<br><span style="font-size:12px">最深積雪 73 cm</span></td></tr>
+      <tr><td>東京</td><td data-l="平均" class="n">5.4°C</td><td data-l="白天最高" class="n">9.8°C</td><td data-l="清晨最低" class="n">1.2°C</td><td data-l="當月降雪" class="n">—</td></tr>
+    </tbody>
+    <caption>氣象廳「過去の気象データ」平年值，草津（群馬縣）觀測點與東京觀測點，1991–2020 年。</caption>
+  </table>
+  </div>
+
+  <div class="tw">
+  <table class="fit">
+    <thead><tr><th>場合</th><th>裝備</th></tr></thead>
+    <tbody>
+      <tr><td><strong>鞋子</strong></td><td><strong>這趟最該花錢的一項。</strong>防水、深紋止滑的雪靴或登山鞋。溫泉街的石板路、坡道和台階都會結冰</td></tr>
+      <tr><td>外出</td><td>發熱衣、毛衣、防水外套、毛帽、手套、圍巾。東京沒那麼冷，洋蔥式穿法，到草津再全部穿上</td></tr>
+      <tr><td>露天風呂</td><td>西の河原是零下的戶外，更衣室走到浴池那一段最冷，動作快一點</td></tr>
+      <tr><td>館內</td><td>界 草津的客房備有作務衣和足袋，不必自備</td></tr>
+      <tr><td>東京走路</td><td>東京三天每天都走很多，穿走得久的鞋；淺草那天傍晚要在戶外站著等亡者送り，多帶一層</td></tr>
+      <tr><td>共通</td><td>室內暖氣強、空氣乾，護唇膏和乳液帶著</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section id="money">
+  <span class="sec-no">07 — 錢</span>
+  <h2>預算</h2>
+  <div class="legend">
+    <span><span class="chip chip--paid">● 已訂</span>　照訂房時的方案算，實付以訂單為準</span>
+    <span><span class="chip chip--live">● 實查</span>　官網或訂票頁查到的數字</span>
+    <span><span class="chip chip--est">○ 估算</span>　依行程推算</span>
+  </div>
+  <div class="tw">
+  <table class="flow grid">
+    <thead><tr><th>項目</th><th>依據</th><th class="n">3 人合計 NT$</th></tr></thead>
+    <tbody>
+      <tr><td>機票 JAL 來回（晚班回程・含 2 件行李）</td>
+        <td><span class="chip chip--paid">● 已訂</span> 9/25 查價 21,150 × 3</td><td class="n">63,450</td></tr>
+      <tr><td>住宿・東京 1/12–1/14（2 晚）</td>
+        <td><span class="chip chip--paid">● 已訂</span> 大井町大都會・會員價・不含餐 ¥64,800</td><td class="n">13,022</td></tr>
+      <tr><td>住宿・草津 1/14–1/16（2 晚）</td>
+        <td><span class="chip chip--paid">● 已訂</span> 界 草津・90 日前優待・含早晚餐 ¥139,005</td><td class="n">27,934</td></tr>
+      <tr><td>住宿・東京 1/16–1/21（5 晚）</td>
+        <td><span class="chip chip--paid">● 已訂</span> 大井町大都會・會員價・不含餐 ¥179,700</td><td class="n">36,112</td></tr>
+      <tr class="sum"><td>已訂小計</td><td></td><td class="n">140,518</td></tr>
+      <tr><td>東京⇄草津 來回</td>
+        <td><span class="chip chip--live">● 部分實查</span> 特急指定席＋巴士，去程 ¥6,060、回程 ¥6,260（週六）× 3 人，計程車估 ¥3,000</td><td class="n">8,030</td></tr>
+      <tr><td>羽田 ⇄ 飯店</td>
+        <td><span class="chip chip--live">● 實查</span> 機場巴士 ¥800 × 3 人 × 2 趟</td><td class="n">965</td></tr>
+      <tr><td>東京市內交通</td>
+        <td><span class="chip chip--est">○ 估算</span></td><td class="n">約 6,000</td></tr>
+      <tr><td>三餐（界 草津含的 4 餐除外）</td>
+        <td><span class="chip chip--est">○ 估算</span> 照第 03 節推薦的店估，每人約 ¥54,000</td><td class="n">約 32,600</td></tr>
+      <tr><td>門票與泡湯</td>
+        <td><span class="chip chip--live">● 實查</span> 草津：湯もみ ¥700＋西の河原 ¥800；東京：明治神宮御苑 ¥500＋陽光水族館約 ¥2,900＋展望台 ¥700＋小杉湯 ¥600；× 3 人</td><td class="n">約 3,700</td></tr>
+      <tr class="hit"><td><strong>合計</strong></td><td>不含購物與相撲票</td><td class="n"><strong>約 191,800</strong></td></tr>
+      <tr class="hit"><td><strong>每人</strong></td><td></td><td class="n"><strong>約 63,900</strong></td></tr>
+    </tbody>
+    <caption>日圓換算 ¥1＝NT$0.200955（Google，2026-09-25；10/3 約 0.2017，差 0.4%，沒有重算）。機票是 9/25 Google Flights 匿名查價，JAL 全票種含 2 件行李。回程特急用 9/26（週六）票價估，機場巴士是京急、東急官網票價（2026/2/1 起 ¥800）。</caption>
+  </table>
+  </div>
+
+  <div class="note">
+    <span class="clabel">已付約 140,500，接下來還會花約 51,300（每人約 17,100）</span>
+    <p>沒算進去的選項：大相撲（二樓椅子席，2026 年一月場所平日每人 ¥3,500–9,000）、明治神宮博物館 ¥1,000、食品模型體驗 ¥3,300、1/18 晚餐改吃浅草今半每人多約 ¥10,000、去程改包車。</p>
+  </div>
+</section>
+
+<footer>
+  <p><strong>資料日期與來源。</strong>2026-11-18：Google 地圖（每個地圖連結逐一打開，核對地點、地址與有沒有停業）、食べログ（40 家店的分數、營業時間與公休日重查）、熱乃湯官網（12 月場次）、浅草今半官網（入店時間與訂位）、JR 東日本新聞稿（えきねっと提早登記的時段）、えきねっと（チケットレス特急券）、JR 東日本公告（長野原草津口可用 Suica）、Ekitan（草津・四万購票方式）。2026-10-03：明治神宮官網（開閉門、御苑、博物館）、淺草寺官網（本堂、點燈、溫座秘法陀羅尼會）、淺草觀光聯盟（亡者送り 18:00）、台東區官網（淺草文化觀光中心）、合羽橋道具街官網（營業概況與各店時間）、元祖食品サンプル屋官網、赤城神社與あかぎカフェ官網、陽光城官網（水族館、展望台）、寶可夢中心官網、日本相撲協會官網與チケット大相撲、ハラカド官網（小杉湯原宿）、東京都消費生活總合中心（錢湯票價）、神谷バー官網、熱乃湯官網、草津三湯官網（西の河原）、國立天文台（日落時刻）、Yahoo!乗換案内（市內交通）、食べログ（餐廳分數、營業時間、訂位與付款）。2026-09-25／26：Google Flights、星野リゾート官網、大井町大都會官網、JR 東日本時刻表、駅探、NAVITIME、京急巴士與東急巴士官網、氣象廳平年值。全部 3 位成人、1 間房。</p>
+
+  <p><strong>不是一手資料的：</strong>特急除了 1 號以外的班次和票價用駅探，JR 巴士用 NAVITIME；隈研吾監修赤城神社取自新聞報導；扭蛋百貨的台數取自 2021 年的新聞稿；代々木公園的搖滾舞者是民間活動；計程車費是估的。</p>
+
+  <p><strong>會變、要你們自己再確認的：</strong>1 月的特急時刻、JR 巴士冬季時刻、機場巴士時刻、熱乃湯冬季場次；明治神宮博物館一月展期、あかぎカフェ與神谷バー一月的營業日；餐廳營業時間會臨時調整；相撲 2027 年一月場所的票價；匯率用的是 9/25 的數字。<strong>我沒有代訂任何東西，也沒有登入你們的任何帳號。</strong></p>
+</footer>
+
+</div>
+</body>
+</html>
